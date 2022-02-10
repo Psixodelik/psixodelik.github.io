@@ -1,65 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+
 body {
-  display: grid;
-  grid-template-columns: minmax(0, 100vh) 250px minmax(400px, auto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
   margin: 0;
+
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+}
+
+/* BEGIN */
+
+.keyboard {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(30, 1fr);
+  width: 1200px;
+}
+
+.key {
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+
+  font: 18px/1.5 "Space Mono", monospace;
+
+  background-color: #f4f5f6;
+  border: 1px solid #888;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.key:hover {
+  background-color: #fff;
+}
+
+/* END */
+
+.span-3 {
+  grid-column: span 3;
+}
+
+.span-4 {
+  grid-column: span 4;
+}
+
+.span-5 {
+  grid-column: span 5;
+}
+
+.span-14 {
+  grid-column: span 14;
+}
+
+.p-0 {
   padding: 0;
-
-  overflow: hidden;
 }
 
-.block-1 {
-  height: fit-content;
-  height: -moz-fit-content;
-
-  background-color: cyan;
+.w-100 {
+  width: 100%;
 }
 
-.block-1::after {
-  display: block;
-  padding-bottom: 100%;
-
-  content: '';
+.border-none {
+  border: none;
 }
-
-.block-2 {
-  height: 100vh;
-
-  background-color: antiquewhite;
-}
-
-.block-3 {
-  height: 100vh;
-
-  background-color: pink;
-}
-
-/* max-width = ширина_block-2 + ширина_block-3 + минимальная_ширина_block-1 */
-@media (max-width: 950px) {
-  body {
-    grid-template-rows: auto 1fr;
-    grid-template-columns: auto 250px;
-  }
-
-  .block-2 {
-    grid-row: span 2;
-  }
-}
-
-/* max-width = ширина_block-2 + ширина_block-3 */
-@media (max-width: 650px) {
-  body {
-    grid-template-rows: unset;
-    grid-template-columns: 1fr;
-    overflow: unset;
-  }
-
-  .block-2,
-  .block-3 {
-    width: 100%;
-  }
-
-  .block-2 {
-    grid-row: unset;
-  }
-}
-
